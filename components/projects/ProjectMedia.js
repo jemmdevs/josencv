@@ -47,7 +47,8 @@ export default function ProjectMedia(props) {
     } else {
       setBackground(bgColors[path]);
     }
-  }, [path]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [path, props.dark]);
 
   return (
     <>

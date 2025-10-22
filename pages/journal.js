@@ -107,6 +107,7 @@ function LocationMap({ className, isActive, coordinates, googleMapsUrl }) {
         mapInstanceRef.current = null;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Update map center when googleMapsUrl changes
@@ -116,6 +117,7 @@ function LocationMap({ className, isActive, coordinates, googleMapsUrl }) {
       mapInstanceRef.current.setCenter(newCoordinates);
       console.log('Map center updated to:', newCoordinates);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [googleMapsUrl, coordinates]);
 
   return (
@@ -153,11 +155,20 @@ function JournalImage({ src, alt }) {
 }
 
 export async function getStaticProps() {
-  if (!process.env.NOTION_API_KEY) {
-    throw new Error('NOTION_API_KEY is not defined in environment variables');
-  }
-  if (!process.env.NOTION_TASKS_ID) {
-    throw new Error('NOTION_TASKS_ID is not defined in environment variables');
+  // Return empty data if Notion credentials are not configured
+  if (!process.env.NOTION_API_KEY || !process.env.NOTION_TASKS_ID) {
+    console.warn('Notion API credentials not configured. Journal page will be empty.');
+    return {
+      props: {
+        notionData: [],
+        meta: {
+          title: 'Joseph Zhang – Journal',
+          description: 'A visual collection of special moments and experiences',
+          image: '/metadata/journal.jpg',
+        },
+      },
+      revalidate: 60,
+    };
   }
 
   try {
@@ -181,7 +192,7 @@ export async function getStaticProps() {
       props: {
         notionData: entries,
         meta: {
-          title: 'Joseph Zhang – Journal',
+          title: 'Joseph Zhang – Journal',
           description: 'A visual collection of special moments and experiences',
           image: '/metadata/journal.jpg',
         },
@@ -189,7 +200,19 @@ export async function getStaticProps() {
       revalidate: 1,
     };
   } catch (error) {
-    throw error;
+    console.error('Error fetching Notion data:', error);
+    // Return empty data on error instead of crashing the build
+    return {
+      props: {
+        notionData: [],
+        meta: {
+          title: 'Joseph Zhang – Journal',
+          description: 'A visual collection of special moments and experiences',
+          image: '/metadata/journal.jpg',
+        },
+      },
+      revalidate: 60,
+    };
   }
 }
 
@@ -298,6 +321,7 @@ export default function Journal(props) {
     };
 
     fetchContent();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.notionData]);
 
   useEffect(() => {

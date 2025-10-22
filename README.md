@@ -1,6 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) portfolio project.
 
 ## Getting Started
+
+### 1. Install Dependencies
+
+First, install the project dependencies:
+
+```bash
+npm install
+```
+
+### 2. Configure Environment Variables (Optional)
+
+This project uses Notion API for the Journal page. If you want this feature to work, you'll need to configure the environment variables:
+
+1. Copy the `.env.example` file to `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Fill in your API keys in `.env.local`:
+   - `NOTION_API_KEY`: Get from [Notion Integrations](https://www.notion.so/my-integrations)
+   - `NOTION_TASKS_ID`: Your Notion tasks database ID
+   - `NEXT_PUBLIC_MAPBOX_API_KEY`: Get from [Mapbox](https://account.mapbox.com/)
+
+**Note:** The project will build and run without these variables. The Journal page will simply be empty if not configured.
+
+### 3. Run the Development Server
 
 First, run the development server...
 
