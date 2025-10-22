@@ -58,7 +58,7 @@ export default function Navbar(props) {
     >
       {/* logo */}
       <Link className="col-span-4 col-start-1 hover:text-yellow-300" passHref href="/">
-        <h1 className="">Joseph Zhang</h1>
+        <h1 className="">Jose Enrique</h1>
       </Link>
 
       <p

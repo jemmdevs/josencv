@@ -38,7 +38,7 @@ export default function Home() {
               <TextLink link="https://www.hcii.cmu.edu/">Human-Computer Interaction</TextLink> at
               Carnegie Mellon University, an experience I hold fondly and will cherish for the rest
               of my life. If you have an interesting idea,{' '}
-              <TextLink link="mailto:jxsephz@gmail.com">get in touch</TextLink>.
+              <TextLink link="mailto:jemmdev@gmail.com">get in touch</TextLink>.
             </p>
           </div>
           {/* WORK EXPERIENCE */}

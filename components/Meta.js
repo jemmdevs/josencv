@@ -2,10 +2,10 @@ import Head from 'next/head';
 import Script from 'next/script';
 
 function Meta({
-  title = 'Joseph Zhang – Interaction Designer',
-  description = 'Joseph is a designer interested in authoring tools and multimodal interaction',
+  title = 'Jose Enrique – Interaction Designer',
+  description = 'Jose Enrique "josen" is a designer interested in authoring tools and multimodal interaction', 
   image = '/metadata/main.jpg',
-  url = 'www.joseph.cv',
+  url = 'https://josencv.vercel.app',
 }) {
   return (
     <Head>
